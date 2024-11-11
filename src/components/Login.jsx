@@ -13,25 +13,25 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/api/login", {
-        email,
-        password,
-      });
-  
+      const res = await axios.post(
+        "https://healtether-backend-v66t.onrender.com/api/login",
+        {
+          email,
+          password,
+        }
+      );
+
       dispatch(loginSuccess({ token: res.data.token }));
       alert(res.data.message);
-      if(res.data.success){
-      navigate("/home");
+      if (res.data.success) {
+        navigate("/home");
       }
     } catch (error) {
       if (error.response) {
-        // Error response from the server
         alert(error.response.data.message || "An error occurred");
       } else if (error.request) {
-        // No response from the server
         alert("No response from the server");
       } else {
-        // Some other error
         alert(error.message || "An unexpected error occurred");
       }
     }

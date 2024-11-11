@@ -24,35 +24,45 @@ const ResetPassword = () => {
         navigate("/");
       }
     } catch (error) {
-        if (error.response) {
-            // Error response from the server
-            alert(error.response.data.message || "An error occurred");
-          } else if (error.request) {
-            // No response from the server
-            alert("No response from the server");
-          } else {
-            // Some other error
-            alert(error.message || "An unexpected error occurred");
-          }
+      if (error.response) {
+        alert(error.response.data.message || "An error occurred");
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert(error.message || "An unexpected error occurred");
+      }
     }
   };
 
   return (
-    <div style={{display:'flex',flexDirection:'column', justifyContent:'center',alignItems:'center',marginTop:'150px'}}>
-      <h2 style={{marginBottom:'20px'}}>Reset Password</h2>
-  <form onSubmit={handleSubmit}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "150px",
+      }}
+    >
+      <h2 style={{ marginBottom: "20px" }}>Reset Password</h2>
+      <form onSubmit={handleSubmit}>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="New Password"
-        //   autoComplete="true"
+          //   autoComplete="true"
           required
-          style={{fontSize:'20px'}}
+          style={{ fontSize: "20px" }}
         />
-        <button type="submit" className='btn btn-outline-success' style={{marginLeft:'5px',marginBottom:'6px'}}>Reset Password</button>
+        <button
+          type="submit"
+          className="btn btn-outline-success"
+          style={{ marginLeft: "5px", marginBottom: "6px" }}
+        >
+          Reset Password
+        </button>
       </form>
-      
     </div>
   );
 };

@@ -11,24 +11,24 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/api/register", {
-        name,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://healtether-backend-v66t.onrender.com/api/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
       alert(res.data.message);
       if (res.data.success) {
         navigate("/");
       }
     } catch (error) {
       if (error.response) {
-        // Error response from the server
         alert(error.response.data.message || "An error occurred");
       } else if (error.request) {
-        // No response from the server
         alert("No response from the server");
       } else {
-        // Some other error
         alert(error.message || "An unexpected error occurred");
       }
     }
