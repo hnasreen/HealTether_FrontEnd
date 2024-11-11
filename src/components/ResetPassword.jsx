@@ -14,7 +14,7 @@ const ResetPassword = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/reset-password",
+        "https://healtether-backend-v66t.onrender.com/api/reset-password",
         { password },
         { headers: { Authorization: `Bearer ${token}` } }
       );
